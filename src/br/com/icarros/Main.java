@@ -14,6 +14,7 @@ public class Main {
         List<Integer> numbers = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
         numbers.forEach(number  -> {
             if (number % 3 == 0 && number % 5 == 0){
+                System.out.println(ConstantsUtil.FIZZ_BUZZ);
             }else if (number % 3 == 0){
                 System.out.println(ConstantsUtil.FIZZ);
             }else if (number % 5 == 0){
