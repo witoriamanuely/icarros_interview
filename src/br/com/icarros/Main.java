@@ -25,50 +25,63 @@ public class Main {
         });
     }
 
-    public static void angryBirds(String[] stars ){
+    public static long angryBirds(String[] stars ){
         char star = '*';
+        long total;
         List<String> starsList = Arrays.stream(stars).collect(Collectors.toList());
-        starsList.forEach(s -> {
-            System.out.println(s.chars().filter(st -> st == star).count());
-        });
+        total = starsList.stream().mapToLong(s -> s.chars().filter(st -> st == star).count()).sum();
+        return total;
     }
 
     public static int creepyHours(String[] hours){
-        String[] a;
-        int contAux = 0, contFinal = 0;
-        for (int i = 0; i < hours.length; i++){
-            if(hours[i].charAt(0) == hours[i].charAt(1)){ // 00 xx
-                contAux ++;
-            }
-            if (hours[i].charAt(3) == hours[i].charAt(4)){ // xx 00
-                contAux ++;
-            }
-            if(hours[i].charAt(1) == hours[i].charAt(3)){  // x0 0x
-                contAux ++;
-            }
-            if(hours[i].charAt(1) == hours[i].charAt(4)){  // x0 x0
-                contAux ++;
-            }
-            if(hours[i].charAt(0) == hours[i].charAt(3)){  // 0x 0x
-                contAux ++;
-            }
-            if (hours[i].charAt(0) == hours[i].charAt(4)){ //  0x x0
-                contAux ++;
-            }
+        int contFinal = 0;
 
-            if (contAux % 2 ==  0){
+        for (int i = 0; i < hours.length; i++){
+            if((hours[i].charAt(0) == hours[i].charAt(1)) && (hours[i].charAt(3) == hours[i].charAt(4))){ // AA:BB - AA:AA
+                contFinal ++;
+            } else if((hours[i].charAt(1) == hours[i].charAt(3)) && (hours[i].charAt(0) == hours[i].charAt(4))){ // AB:BA
+                contFinal ++;
+            } else if(hours[i].charAt(0) == hours[i].charAt(3) && (hours[i].charAt(1) == hours[i].charAt(4))){ // AB: AB
                 contFinal ++;
             }
-            contAux = 0;
         }
+
         return contFinal;
     }
+    protected static int returnIndexKthLargest(int[] arr){
+        int maxPoint = 0, indexMaxPoint = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (maxPoint < arr[i]){
+                maxPoint = arr[i];
+                indexMaxPoint = i;
+            }
+        }
+        return indexMaxPoint;
+    }
+    public static int theChampions(int[] wins, int[] ties){
+        int indexMaxPointWin = returnIndexKthLargest(wins);
+        int indexMaxPointTie = returnIndexKthLargest(ties);
+
+        if ((wins[indexMaxPointWin]*ConstantsUtil.WINS_POINTS) >= ties[indexMaxPointTie]){
+            return (wins[indexMaxPointWin] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointWin] * ConstantsUtil.TIES_POINTS);
+        }
+        return (wins[indexMaxPointTie] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointTie] * ConstantsUtil.TIES_POINTS);
+    }
+
+
     public static void main(String[] args) {
-        String[] stars = {"---","--*"};
-        String[] hours = {"11:00", "10:00", "13:31"};
-        fuzzingBuzzing();
-        creepyHours(hours);
-        angryBirds(stars);
+
+        String[] stars = {"***","--*", "*--", "-*-", "---"};
+        String[] hours = {"11:00", "00:00", "13:31", "12:12" ,"12:69"};
+        int[] wins = {1,0,3};
+        int[] ties = {2,2,0};
+
+
+        //fuzzingBuzzing();
+        //creepyHours(hours);
+        //angryBirds(stars);
+        //theChampions(wins,ties);
+
     }
 
 }
