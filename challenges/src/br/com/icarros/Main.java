@@ -77,10 +77,10 @@ public class Main {
         int[] ties = {2,2,0};
 
 
-        //fuzzingBuzzing();
-        //creepyHours(hours);
-        //angryBirds(stars);
-        //theChampions(wins,ties);
+        fuzzingBuzzing(); // Q1
+        creepyHours(hours); // Q2
+        angryBirds(stars); // Q3
+        theChampions(wins,ties); //Q4
 
     }
 
