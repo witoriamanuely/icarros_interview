@@ -82,7 +82,7 @@ public class Main {
         fuzzingBuzzing(); // Q1
         creepyHours(hours); // Q2
         angryBirds(stars); // Q3
-        System.out.println(theChampions(wins,ties)); //Q4
+        theChampions(wins,ties); //Q4
 
     }
 
