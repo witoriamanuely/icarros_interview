@@ -33,15 +33,15 @@ $ mvn clean install -DskipTests
 $ mvn spring-boot:run
 ```
 
-Abaixo será descrito os endpoints, os métodos de retorno de cada um. O server de acesso é o localhost:8080/. 
+Abaixo será descrito os endpoints, os métodos de retorno de cada um. O server de acesso é o localhost:8080. 
 | endpoint | método de retorno | observação |
 | ------ | ------ | -----|
-| api/| findAll() | Esse método retorna todo o json da aplicação|
-| api/races/ | findAllRaces() | Esse método retorna todas as corridas|
-| api/races/results/ | findAllResults() | Esse método retorna todos os resultados de todas as corridas|
-| api/races/{round} | findRaceOfRound() | Esse método retorna as corridas pela rodada passada no endpoint, ex: round = 20|
-| api/races/{round}/results/ |findResultsOfRound() | Esse método retorna os resultados das corridas pela rodada, ex: round = 20|
-| api/races/name/ | findRaceNames() | Esse método retorna os nomes de todas as corridas|
-| api/races/drivers/ | findDrivers() | Esse método retorna todos os motoristas participantes de todas as corridas |
+| /api| findAll() | Esse método retorna todo o json da aplicação|
+| /api/races | findAllRaces() | Esse método retorna todas as corridas|
+| /api/races/results| findAllResults() | Esse método retorna todos os resultados de todas as corridas|
+| /api/races/{round} | findRaceOfRound() | Esse método retorna as corridas pela rodada passada no endpoint, ex: round = 20|
+| /api/races/{round}/results |findResultsOfRound() | Esse método retorna os resultados das corridas pela rodada, ex: round = 20|
+| /api/races/name | findRaceNames() | Esse método retorna os nomes de todas as corridas|
+| /api/races/drivers | findDrivers() | Esse método retorna todos os motoristas participantes de todas as corridas |
 
 
