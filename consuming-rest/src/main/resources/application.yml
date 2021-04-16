@@ -1,3 +1,9 @@
 application:
     formula-one:
       url: https://ergast.com/api/f1/2017/last/results.json
+
+spring:
+  application:
+    name: icarros
+  banner:
+    location: banner.txt

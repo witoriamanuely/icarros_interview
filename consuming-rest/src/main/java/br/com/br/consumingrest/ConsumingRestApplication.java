@@ -1,6 +1,7 @@
 package br.com.br.consumingrest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConsumingRestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumingRestApplication.class, args);
+		SpringApplication app = new SpringApplication(ConsumingRestApplication.class);
+		app.run(args);
 	}
 
 }
