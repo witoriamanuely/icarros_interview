@@ -25,7 +25,7 @@ public class Main {
         });
     }
 
-    public static long angryBirds(String[] stars ){
+    public static long angryBirds(String[] stars){
         char star = '*';
         long total;
         List<String> starsList = Arrays.stream(stars).collect(Collectors.toList());
@@ -62,10 +62,12 @@ public class Main {
         int indexMaxPointWin = returnIndexKthLargest(wins);
         int indexMaxPointTie = returnIndexKthLargest(ties);
 
-        if ((wins[indexMaxPointWin]*ConstantsUtil.WINS_POINTS) >= ties[indexMaxPointTie]){
-            return (wins[indexMaxPointWin] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointWin] * ConstantsUtil.TIES_POINTS);
+        int totalWinsMaxPoints = (wins[indexMaxPointWin] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointWin] * ConstantsUtil.TIES_POINTS);
+        int totalTieMaxPoints = (wins[indexMaxPointTie] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointTie] * ConstantsUtil.TIES_POINTS);
+        if (totalWinsMaxPoints >= totalTieMaxPoints){
+            return totalWinsMaxPoints;
         }
-        return (wins[indexMaxPointTie] * ConstantsUtil.WINS_POINTS) + (ties[indexMaxPointTie] * ConstantsUtil.TIES_POINTS);
+        return totalTieMaxPoints;
     }
 
 
@@ -74,13 +76,13 @@ public class Main {
         String[] stars = {"***","--*", "*--", "-*-", "---"};
         String[] hours = {"11:00", "00:00", "13:31", "12:12" ,"12:69"};
         int[] wins = {1,0,3};
-        int[] ties = {2,2,0};
+        int[] ties = {9,2,0};
 
 
         fuzzingBuzzing(); // Q1
         creepyHours(hours); // Q2
         angryBirds(stars); // Q3
-        theChampions(wins,ties); //Q4
+        System.out.println(theChampions(wins,ties)); //Q4
 
     }
 
