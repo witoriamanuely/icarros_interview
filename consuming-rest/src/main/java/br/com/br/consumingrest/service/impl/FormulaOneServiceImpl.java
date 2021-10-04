@@ -1,13 +1,16 @@
 package br.com.br.consumingrest.service.impl;
 
+import br.com.br.consumingrest.exception.BadRequestException;
 import br.com.br.consumingrest.service.FormulaOneService;
 import br.com.br.consumingrest.service.dto.DriverDTO;
 import br.com.br.consumingrest.service.dto.FormulaOneDTO;
 import br.com.br.consumingrest.service.dto.RaceDTO;
 import br.com.br.consumingrest.service.dto.ResultDTO;
+import br.com.br.consumingrest.service.utils.ConstantsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -81,5 +84,21 @@ public class FormulaOneServiceImpl implements FormulaOneService {
         return raceDTOS.stream().map(race -> race.getResults().stream().map(e -> e.getDriver()).collect(Collectors.toList())).collect(Collectors.toList());
     }
 
+    @Override
+    public void sendRaces(Integer id ){
+        if (!id.equals(1)){
+            throw new BadRequestException(ConstantsUtil.ERROR_BAD_REQUEST, ConstantsUtil.ERROR_TITLE);
+        }
+        System.out.println(String.format("Teste de unidade POST request: {}", id));
+    }
 
+    @Override
+    public void deleteRaces(Integer id ){
+        System.out.println(String.format("Teste de unidade DELETE request: {}", id));
+    }
+
+    @Override
+    public void sendAll(FormulaOneDTO formulaOneDTO ){
+        System.out.println(String.format("Teste de unidade POST request: {}", formulaOneDTO));
+    }
 }

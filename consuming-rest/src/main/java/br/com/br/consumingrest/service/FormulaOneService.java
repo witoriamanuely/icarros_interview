@@ -24,4 +24,11 @@ public interface FormulaOneService {
     List<String> findRaceNames();
 
     List<List<DriverDTO>> findAllDrivers();
+
+    void sendRaces(Integer id);
+
+    void deleteRaces(Integer id);
+
+    void sendAll(FormulaOneDTO formulaOneDTO);
+
 }

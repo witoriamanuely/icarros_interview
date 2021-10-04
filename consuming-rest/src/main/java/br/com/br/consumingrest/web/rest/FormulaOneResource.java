@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,7 +43,7 @@ public class FormulaOneResource {
         return new ResponseEntity<>(resultDTOS, HttpStatus.OK);
     }
 
-    @GetMapping("r/aces/results")
+    @GetMapping("/races/results")
     public ResponseEntity<List<List<ResultDTO>>> findAllResults() {
         List<List<ResultDTO>> resultDTOS  = service.findResult();
         log.debug("REST request to get all results: {}", resultDTOS);
@@ -72,6 +69,27 @@ public class FormulaOneResource {
         List<List<DriverDTO>> raceNames  = service.findAllDrivers();
         log.debug("REST request to get all drivers: {}", raceNames);
         return new ResponseEntity<>(raceNames, HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Void> sendRaces(@RequestBody Integer id) {
+        service.sendRaces(id);
+        log.debug("REST request to post race: {}");
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping()
+    public ResponseEntity<Void> sendAll(@RequestBody FormulaOneDTO formulaOneDTO) {
+        service.sendAll(formulaOneDTO);
+        log.debug("REST request to post all: {}");
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<Void> deleteRaces(@PathVariable Integer id) {
+        service.deleteRaces(id);
+        log.debug("REST request to post race: {}");
+        return ResponseEntity.ok().build();
     }
 
 }
