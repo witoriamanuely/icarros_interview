@@ -37,13 +37,6 @@ public class FormulaOneTest extends AbstractTest<FormulaOneResource> {
         getMockMvc().perform(get(API_FORMULA_ONE)).andExpect(status().isOk());
     }
 
-    /** Caso de teste para GET /api esperando status = 404. Esse caso é só pra demonstrar um andExepct diferente **/
-    @Test
-    @DisplayName("List all not found")
-    public void listAllNotFound() throws Exception {
-        getMockMvc().perform(get(API_FORMULA_ONE+"/random")).andExpect(status().isNotFound());
-    }
-
     /** Caso de teste para GET /api/races/{id} esperando status = 200 **/
     @Test
     @DisplayName("List Race of Round")

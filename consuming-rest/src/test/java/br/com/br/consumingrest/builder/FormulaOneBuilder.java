@@ -10,9 +10,10 @@ import java.text.ParseException;
 @Component
 public class FormulaOneBuilder extends ConstrutorDeEntidade<FormulaOneDTO> {
 
-    /*Nesse caso, como temos um consumer a ideia do DTO é aplicada como construção de entidade devido não termos
+    /** Nesse caso, como temos um consumer a ideia do DTO é aplicada como construção de entidade devido não termos
     * persistencia no banco de dados e entidades de fato, porém a ideia do builder se dá para construir de forma mockada
-    * uma entidade com seus atributos setados com alguma informação. Uma boa prática seria setar valores vindos de uma classe util. */
+    * uma entidade com seus atributos setados com alguma informação. Uma boa prática seria setar valores vindos de uma classe util.
+     **/
     @Override
     public FormulaOneDTO construirEntidade() throws ParseException {
         FormulaOneDTO formulaOneDTO = new FormulaOneDTO();
